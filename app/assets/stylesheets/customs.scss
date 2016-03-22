@@ -1,0 +1,161 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+* {
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+
+/*====================
+    Header
+======================*/
+
+.logo{
+  font-size: 40px;
+  padding: 25px 15px;
+  font-weight: 400;
+}
+
+.navbar-default{
+  background-color: #2980B9;
+  height: 75px;
+  border-radius: 0;
+  border: 0;
+}
+
+.navbar-brand.logo{
+  color: #fff;
+}
+
+.navbar-brand.logo:hover{
+  color: #F2F2F2;
+}
+
+.rm-p{
+  padding-left: 0!important;
+}
+
+
+/*====================
+   New Booking Page
+======================*/
+
+.search{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.search-results{
+  margin-bottom: 50px;
+}
+
+h3{
+  border-bottom: 1px solid #000;
+  line-height: 1.5em;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+/* passenger details page */
+
+.passenger_details{
+  margin-bottom: 50px;
+}
+
+.form-group{
+  padding-right: 0;
+}
+
+
+
+.flight-details{
+}
+
+/*====================
+   New Booking Page
+======================*/
+
+.passenger-box{
+  padding-bottom: 40px;
+}
+
+.control-label{
+  text-align: left;
+}
+
+/*====================
+   Show Booking Page
+======================*/
+
+h1{
+  text-align: center;
+}
+
+.booking{
+  margin-bottom: 10%;
+}
+
+
+
+
+/*====================
+   Footer
+======================*/
+
+html{
+  position: relative;
+  min-height: 100%;
+  background-color: #eee;
+}
+
+body{
+  margin-bottom: 70px;
+  background-color: #eee;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 70px;
+  background-color: #4e5d6c;
+}
+
+.copy{
+  margin-top: 35px;
+  color: #fff;
+}
+
+.contact ul li{
+  display: inline-block;
+  font-size: 25px;
+  padding-right: 10px;
+  color: #000;
+
+}
+
+.contact ul{
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.contact h4{
+  margin-bottom: 0;
+}
+
+.contact, .contact ul li a{
+  color: #ebebeb;
+}
+
+.contact ul li a:hover{
+  color:#2980B9;
+}
+
+#error_explanation{
+  color: red;
+}
