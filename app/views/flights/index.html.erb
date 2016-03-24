@@ -1,2 +1,31 @@
-<h1>Flights#index</h1>
-<p>Find me in app/views/flights/index.html.erb</p>
+<div class="row search">
+
+  <div class="col-sm-6 col-sm-offset-3 well">
+    <h3>Search for a flight</h3>
+
+      <%= form_tag(flights_path, method: "get") do %>
+
+        <div class="form-group col-md-6 rm-p">
+          <%= label_tag(:departure_airport_id, "Departure Airport:") %>
+          <%= select_tag(:departure_airport_id, options_for_select(@airports, @departure_airport), class: "form-control") %>
+        </div>
+
+        <div class="form-group col-md-6">
+          <%= label_tag(:destination_airport_id, "Destination Airport:") %>
+          <%= select_tag(:destination_airport_id, options_for_select(@airports, @destination_airport), class: "form-control", id: "destination-select") %>
+        </div>
+
+        <div class="form-group col-md-6 rm-p">
+          <%= label_tag(:departure_date, "Date:") %>
+          <%= select_tag(:departure_date, options_for_select(@dates, @depart_date), class: "form-control") %>
+        </div>
+
+        <div class="form-group col-md-6">
+          <%= label_tag(:passengers, "Number of Passengers:") %>
+          <%= select_tag(:passengers, options_for_select(@passenger_options, @passengers), class: "form-control") %>
+        </div>
+
+        <%= submit_tag "Search", class: "btn btn-primary col-md-4 col-md-offset-8" %>
+      <% end %>
+  </div>
+</div>
