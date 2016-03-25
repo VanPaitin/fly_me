@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Materialize
 gem "bootstrap-sass"
 gem "websocket-rails"
-
+gem "puma"
 # Use ActiveModel has_secure_password
 gem "bcrypt", "~> 3.1.7"
 gem "omniauth-oauth2", "~> 1.3.1"

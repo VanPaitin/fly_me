@@ -6,18 +6,18 @@
       <%= form_tag(flights_path, method: "get") do %>
 
         <div class="form-group col-md-6 rm-p">
-          <%= label_tag(:departure_airport_id, "Departure Airport:") %>
-          <%= select_tag(:departure_airport_id, options_for_select(@airports, @departure_airport), class: "form-control") %>
+          <%= label_tag(:from_airport_id, "Departure Airport:") %>
+          <%= select_tag(:from_airport_id, options_for_select(@airports, @from_airport_code), class: "form-control") %>
         </div>
 
         <div class="form-group col-md-6">
-          <%= label_tag(:destination_airport_id, "Destination Airport:") %>
-          <%= select_tag(:destination_airport_id, options_for_select(@airports, @destination_airport), class: "form-control", id: "destination-select") %>
+          <%= label_tag(:to_airport_id, "Destination Airport:") %>
+          <%= select_tag(:to_airport_id, options_for_select(@airports, @to_airport_code), class: "form-control", id: "destination-select") %>
         </div>
 
         <div class="form-group col-md-6 rm-p">
-          <%= label_tag(:departure_date, "Date:") %>
-          <%= select_tag(:departure_date, options_for_select(@dates, @depart_date), class: "form-control") %>
+          <%= label_tag(:date, "Date:") %>
+          <%= select_tag(:date, options_for_select(@dates, @date), class: "form-control") %>
         </div>
 
         <div class="form-group col-md-6">
@@ -29,3 +29,49 @@
       <% end %>
   </div>
 </div>
+<% unless @flights.empty? %>
+  <div class="row search-results">
+
+    <div class="col-sm-6 col-sm-offset-3 well">
+      <h3>Choose a flight</h3>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Flight No:</th>
+            <th>Departing From:</th>
+            <th>Destination</th>
+            <th>Date:</th>
+            <th>Time:</th>
+          </tr>
+        </thead>
+
+        <%= form_tag(new_booking_path, method: "get") do %>
+          <tbody>
+            <% @flights.each do |flight| %>
+              <tr>
+                <td><%= radio_button_tag(:flight_id, flight.id,class: "flight_select")  %></td>
+                <td><%= flight.id %></td>
+                <td><%= flight.from_airport.city %></td>
+                <td><%= flight.to_airport.city %></td>
+                <td><%= flight.date.strftime("#{flight.date.day.ordinalize} %B %Y") %></td>
+                <td><%= flight.time %></td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+          <%= hidden_field_tag(:passengers, params[:passengers]) %>
+          <%= submit_tag"Continue", class: "btn btn-success col-md-4 col-md-offset-8" %>
+        <% end %>
+
+    </div>
+  </div>
+<% end %>
+<% if @flights.empty? && params[:date] && params[:from_airport_id] != params[:to_airport_id] %>
+  <h3>We are sorry, but there are no flights traveling<br>
+    from <%= Airport.find(params[:from_airport_id]).city %>
+    to <%= Airport.find(params[:to_airport_id]).city %> on this day<br>
+    Try a different day
+  </h3>
+<% end %>
