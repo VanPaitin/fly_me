@@ -5,28 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-def my_rand(integer)
-  test = rand(integer)
-  if test == 0
-    my_rand(integer)
-  else
-    test
-  end
-end
+Flight.delete_all
+ActiveRecord::Base.connection.execute("DELETE from sqlite_sequence where name = 'flights'")
 airport_id = (1..13).to_a
-
+times = ["8:00 am", "10:00 am", "12:00 pm", "2:00 pm", "4:00 pm", "6:00 pm", "9:00 pm"]
 def set_airport(id)
   from_airport = id.sample
   to_airport = id.sample
-  set_airport(id) if from_airport == to_airport
+  while from_airport == to_airport
+    from_airport = id.sample
+    to_airport = id.sample
+  end
   return from_airport, to_airport
 end
-def set_flight(id)
-  duration = (1..17).to_a.sample
-  date = Time.at(Time.now  + 24 * 3600 * my_rand(30))
+def set_flight(id, times)
+  duration = (1..14).to_a.sample
+  date = Time.at(Time.now  + 24 * 3600 * rand(11..15))
   airports = set_airport(id)
-  {from_airport_id: airports[0], to_airport_id: airports[1], duration: duration, date: date}
+  {from_airport_id: airports[0], to_airport_id: airports[1], duration: duration, date: date, time: times.sample}
 end
-200.times do
-  Flight.create(set_flight(airport_id))
+2000.times do
+  Flight.create(set_flight(airport_id, times))
 end

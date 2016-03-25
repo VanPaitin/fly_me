@@ -1,6 +1,7 @@
 class Airport < ActiveRecord::Base
-  has_many :from_airports, class_name: "Flight"
-  has_many :to_airports, class_name: "Flight"
+  has_many :from_flights, class_name: "Flight", foreign_key: :from_airport_id
+  has_many :to_flights, class_name: "Flight", foreign_key: :to_airport_id
+
   def to_s
     "#{name}, #{city}"
   end
