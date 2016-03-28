@@ -51,7 +51,7 @@
           <tbody>
             <% @flights.each do |flight| %>
               <tr>
-                <td><%= radio_button_tag(:flight_id, flight.id,class: "flight_select")  %></td>
+                <td><%= radio_button_tag(:flight_id, flight.id, class: "flight_select")  %></td>
                 <td><%= flight.id %></td>
                 <td><%= flight.from_airport.city %></td>
                 <td><%= flight.to_airport.city %></td>
