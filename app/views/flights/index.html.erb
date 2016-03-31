@@ -47,7 +47,7 @@
           </tr>
         </thead>
 
-        <%= form_tag(new_booking_path, method: "get") do %>
+        <%= form_tag(bookings_path) do %>
           <tbody>
             <% @flights.each do |flight| %>
               <tr>
@@ -62,7 +62,7 @@
           </tbody>
       </table>
           <%= hidden_field_tag(:passengers, params[:passengers]) %>
-          <%= submit_tag"Continue", class: "btn btn-success col-md-4 col-md-offset-8" %>
+          <%= submit_tag "Continue", class: "btn btn-success col-md-4 col-md-offset-8" %>
         <% end %>
 
     </div>

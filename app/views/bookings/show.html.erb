@@ -1,1 +1,59 @@
 
+<h1>Your Flight has Been Booked!<br>
+Here are your flight details below</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 well booking">
+
+    <h3>Flight Details</h3>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Booking Number:</th>
+          <th>Departing Airport</th>
+          <th>Destination Airport</th>
+          <th>Departure Date</th>
+          <th>Departure Time</th>
+          <th>Duration</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td><%= @booking.id %></td>
+          <td><%= "#{@booking.flight.from_airport.name}, #{@booking.flight.from_airport.city}" %></td>
+          <td><%= "#{@booking.flight.to_airport.name}, #{@booking.flight.to_airport.city}" %></td>
+          <td><%= @booking.flight.date.strftime("#{@booking.flight.date.day.ordinalize} %B %Y") %></td>
+          <td><%= @booking.flight.time %></td>
+          <td><%= @booking.flight.duration %> hours </td>
+          <td>$<%= @booking.passengers.count * 1200 %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Passenger details</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone number</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @booking.passengers.each do |p| %>
+          <tr>
+            <td><%= p.name %></td>
+            <td><%= p.email %></td>
+            <td><%= p.phone_number %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <h3>You will receive a confirmation email soon enough</h3>
+    <h4>It is now safe to close this window or you may decide<br>
+    to make another booking <%= link_to "Here", root_path %>.</h4>
+  </div>
+</div>
