@@ -1,7 +1,7 @@
 class Booking < ActiveRecord::Base
   belongs_to :flight
-  belongs_to :passenger
-  has_many :passenger_bookings
-  accepts_nested_attributes_for :passenger
+  has_many :passengers
+  accepts_nested_attributes_for :passengers
   validates :flight_id, presence: true
+  validates :price, presence: true
 end

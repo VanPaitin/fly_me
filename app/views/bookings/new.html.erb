@@ -1,7 +1,7 @@
 
 <div class="row passenger_details">
     <div class="col-md-6 col-md-offset-3">
-
+      <h5>Please, know that you might have to login in order to keep track of your bookings</h5>
       <div class="row">
         <h2>Passenger Details</h2>
         <p>Please enter passenger details for flight:</p>
@@ -16,16 +16,18 @@
                   <th>Destination Airport</th>
                   <th>Departure Date</th>
                   <th>Departure Time</th>
+                  <th>Price <p>(No. of passengers x $1000)</p></th>
                 </tr>
               </thead>
 
               <tbody>
                 <tr>
                   <td><%= @flight.id %></td>
-                  <td><%= @flight.from_airport.name + @flight.from_airport.city %></td>
-                  <td><%= @flight.to_airport.name + @flight.to_airport.city %></td>
+                  <td><%= @flight.from_airport.name + ", " + @flight.from_airport.city %></td>
+                  <td><%= @flight.to_airport.name + ", " + @flight.to_airport.city %></td>
                   <td><%= @flight.date.strftime("#{@flight.date.day.ordinalize} %B %Y") %></td>
                   <td><%= @flight.time %></td>
+                  <td>$ <%= @no_of_passengers * 1000 %></td>
                 </tr>
               </tbody>
             </table>
@@ -33,8 +35,7 @@
           </div>
           </div>
 
-
-      <%= form_for @booking, :html => { :class => "form-horizontal" } do |flight|  %>
+      <%= form_for @booking, :html => { :class => "form-horizontal" } do |f|  %>
         <% if @booking.errors.any? %>
           <div id="error_explanation">
 
@@ -50,44 +51,40 @@
           </div>
         <% end %>
 
-        <% passenger_num = 1 %>
+       <% passenger_place_holder = 1 %>
+          <%= f.fields_for :passengers do | pass| %>
+            <div class="row">
+              <div class="col-md-12 well passenger-box">
+                <h3>Passenger <%= passenger_place_holder %></h3>
 
-        <%= flight.fields_for :passengers do |passenger| %>
-          <div class="row">
-            <div class="col-md-12 well passenger-box">
-              <h3>Passenger <%= passenger_num %></h3>
-              <% passenger_num += 1 %>
+                <div class="form-group">
+                  <%= pass.label :name, "Name:", class: "control-label col-sm-2"%>
+                  <div class="col-md-9">
+                    <%= pass.text_field :name, class: "form-control"%>
+                  </div>
+                </div>
 
-              <div class="form-group">
-                <%= passenger.label :name, "Name:", class: "control-label col-sm-2"%>
-                <div class="col-md-9">
-                  <%= passenger.text_field :name, class: "form-control"%>
+                <div class="form-group">
+                  <%= pass.label :email, "Email:", class: "control-label col-sm-2" %>
+                  <div class="col-md-9">
+                    <%= pass.email_field :email, class: "form-control" %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <%= pass.label :phone_number, "Phone", class: "control-label col-sm-2" %>
+                  <div class="col-md-9">
+                    <%= pass.phone_field :phone_number, class: "form-control" %>
+                  </div>
                 </div>
               </div>
-
-              <div class="form-group">
-                <%= passenger.label :email, "Email:", class: "control-label col-sm-2" %>
-                <div class="col-md-9">
-                  <%= passenger.email_field :email, class: "form-control" %>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <%= passenger.label :phone_number, "Phone", class: "control-label col-sm-2" %>
-                <div class="col-md-9">
-                  <%= passenger.phone_field :phone_number, class: "form-control" %>
-                </div>
-              </div>
-
             </div>
-          </div>
-       <% end %>
+           <% passenger_place_holder += 1 %>
+         <% end %>
 
-        <%= hidden_field_tag(:passengers, params[:passengers]) %>
-        <%= flight.hidden_field :flight_id, value: params[:flight_id] %>
-        <%= hidden_field_tag(:flight_id, params[:flight_id]) %>
-
-         <%= flight.submit "Book Flight", class: "btn btn-success btn-lg col-md-4 col-md-offset-4" %>
+        <%= hidden_field_tag("booking[flight_id]", params[:flight_id]) %>
+        <%= hidden_field_tag("booking[price]", @no_of_passengers * 1000) %>
+         <%= f.submit "Book Flight", class: "btn btn-success btn-lg col-md-4 col-md-offset-4" %>
       <% end %>
   </div>
 </div>

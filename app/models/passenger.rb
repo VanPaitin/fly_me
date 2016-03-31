@@ -3,7 +3,6 @@ class Passenger < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates :phone_number, numericality: true
-  has_many :bookings, through: :passenger_bookings
-  has_many :passenger_bookings
-  has_many :flights, through: :bookings
+  belongs_to :booking
+  belongs_to :flight
 end
