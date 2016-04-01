@@ -1,10 +1,8 @@
 class BookingsController < ApplicationController
   include BookingsHelper
-
+  before_action :set_flight
   def new
-    @flight = Flight.find(params[:flight_id])
-    @booking = Booking.new
-    @booking.flight_id = @flight.id
+    @booking = @flight.bookings.new
     @no_of_passengers = params[:passengers].to_i
     @no_of_passengers.times { @booking.passengers.build }
   end
@@ -19,13 +17,20 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @booking.flight_id = params[:flight_id]
+    @booking = @flight.bookings.new(booking_params)
     if @booking.save
       flash[:notice] = "This flight has been booked successfully"
+      @booking.passengers.each do |passenger|
+        UserMailer.thanks(passenger).deliver_now
+      end
       redirect_to flight_booking_path(@booking.flight, @booking)
     else
       render :new
     end
   end
+
+  private
+    def set_flight
+      @flight = Flight.find(params[:flight_id])
+    end
 end
