@@ -27,3 +27,18 @@ end
 2000.times do
   Flight.create(set_flight(airport_id, times))
 end
+Airport.delete_all
+Airport.create(name: "Munich International", city: "Germany")
+Airport.create(name: "Miami International", city: "Florida")
+Airport.create(name: "Kuala Lumpur International", city: "Malaysia")
+Airport.create(name: "San Francisco International", city: "Califonia")
+Airport.create(name: "J. F. Kennedy International", city: "New york")
+Airport.create(name: "Madrid Barajas International", city: "Madrid")
+Airport.create(name: "Beijing Capital International", city: "Beijing")
+Airport.create(name: "London Heathrow", city: "London")
+Airport.create(name: "Tokyo International", city: "Tokyo")
+Airport.create(name: "Dubai International", city: "Dubai")
+Airport.create(name: "Amsterdam Schiphol", city: "Amsterdam")
+Airport.create(name: "Murtala International", city: "Lagos")
+Airport.create(name: "Nnamdi Azikwe International", city: "Abuja")
+
