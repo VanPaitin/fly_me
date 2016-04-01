@@ -22,7 +22,8 @@ def set_flight(id, times)
   duration = (1..14).to_a.sample
   date = Time.at(Time.now  + 24 * 3600 * rand(11..15))
   airports = set_airport(id)
-  {from_airport_id: airports[0], to_airport_id: airports[1], duration: duration, date: date, time: times.sample}
+  { from_airport_id: airports[0], to_airport_id: airports[1],
+    duration: duration, date: date, time: times.sample }
 end
 2000.times do
   Flight.create(set_flight(airport_id, times))
@@ -41,4 +42,3 @@ Airport.create(name: "Dubai International", city: "Dubai")
 Airport.create(name: "Amsterdam Schiphol", city: "Amsterdam")
 Airport.create(name: "Murtala International", city: "Lagos")
 Airport.create(name: "Nnamdi Azikwe International", city: "Abuja")
-
