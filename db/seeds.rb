@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Flight.delete_all
-ActiveRecord::Base.connection.execute("DELETE from sqlite_sequence where name = 'flights'")
+# ActiveRecord::Base.connection.execute("DELETE from sqlite_sequence where name = 'flights'")
 airport_id = (1..13).to_a
 times = ["8:00 am", "10:00 am", "12:00 pm", "2:00 pm", "4:00 pm", "6:00 pm", "9:00 pm"]
 def set_airport(id)
