@@ -1,6 +1,6 @@
 module BookingsHelper
   def booking_params
-    params.require(:booking).permit(:flight_id, :price,
+    params.require(:booking).permit(:price,
       passengers_attributes: [:name, :email,
         :phone_number])
   end

@@ -1,9 +1,13 @@
 <h1>You are now Booked!</h1>
 
-<p>Hi <%= @passenger.name %></p>
+<h3>Hi <%= @passenger.name %></h3>
 
-<p>Your booking for flight <%= @passenger.booking.flight_id %> from <%= @passenger.booking.flight.from_airport.city %> to <%= @passenger.booking.flight.to_airport.city %>, has been successful.</p>
-<p>Your booking number is <%= @passenger.booking.id %> just in case you want to make any enquiries or changes regarding your flight. </p>
+<p>We are pleased to inform you that you have booked successfully.<br>
+    Below are your booking details:
+</p>
+<p><em>Departure: </em><strong><%= @passenger.booking.flight.from_airport.city %></strong></p>
+<p><em>Destination: </em><strong><%= @passenger.booking.flight.to_airport.city %></strong></p>
+<p>Your booking number is <em><strong>00<%= @passenger.booking.id %></strong></em> just in case you want to make any enquiries or changes regarding your flight. </p>
 
 <p>Please ensure to arrive early at the airport before your flight, it would be a shame if you were to miss it!</p>
 

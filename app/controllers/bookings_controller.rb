@@ -1,9 +1,8 @@
 class BookingsController < ApplicationController
   include BookingsHelper
-  before_action :set_flight
+  before_action :set_flight_and_passengers, except: [:show]
   def new
     @booking = @flight.bookings.new
-    @no_of_passengers = params[:passengers].to_i
     @no_of_passengers.times { @booking.passengers.build }
   end
 
@@ -30,7 +29,12 @@ class BookingsController < ApplicationController
   end
 
   private
-    def set_flight
+    def set_flight_and_passengers
       @flight = Flight.find(params[:flight_id])
+      if params[:passengers]
+        @no_of_passengers = params[:passengers].to_i
+      else
+        @no_of_passengers = params[:booking][:passengers_attributes].keys.count
+      end
     end
 end
