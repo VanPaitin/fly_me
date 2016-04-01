@@ -59,4 +59,6 @@ group :test do
   gem "shoulda-matchers", "~> 3.1"
   gem "factory_girl_rails"
 end
-
+group :production do
+  gem "pg", "0.17.1"
+end
