@@ -27,7 +27,7 @@
                   <td><%= @flight.to_airport.name + ", " + @flight.to_airport.city %></td>
                   <td><%= @flight.date.strftime("#{@flight.date.day.ordinalize} %B %Y") %></td>
                   <td><%= @flight.time %></td>
-                  <td>$ <%= @no_of_passengers * 1200 %></td>
+                  <td>$ <%= @booking.passengers.count * 1200 %></td>
                 </tr>
               </tbody>
             </table>
@@ -82,7 +82,7 @@
            <% passenger_place_holder += 1 %>
          <% end %>
 
-        <%= f.hidden_field :price, value: @no_of_passengers * 1200 %>
+        <%= f.hidden_field :price, value: @booking.passengers.count * 1200 %>
          <%= f.submit "Book Flight", class: "btn btn-success btn-lg col-md-4 col-md-offset-4" %>
       <% end %>
   </div>
