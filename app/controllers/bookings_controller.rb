@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
 
   def new_placeholder
     redirect_to new_flight_booking_path(params[:flight_id],
-      passengers: params[:passengers])
+                                        passengers: params[:passengers])
   end
 
   def show
@@ -29,12 +29,13 @@ class BookingsController < ApplicationController
   end
 
   private
-    def set_flight_and_passengers
-      @flight = Flight.find(params[:flight_id])
-      if params[:passengers]
-        @no_of_passengers = params[:passengers].to_i
-      else
-        @no_of_passengers = params[:booking][:passengers_attributes].keys.count
-      end
+
+  def set_flight_and_passengers
+    @flight = Flight.find(params[:flight_id])
+    if params[:passengers]
+      @no_of_passengers = params[:passengers].to_i
+    else
+      @no_of_passengers = params[:booking][:passengers_attributes].keys.count
     end
+  end
 end
