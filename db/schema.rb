@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403223025) do
+ActiveRecord::Schema.define(version: 20160404172852) do
 
   create_table "airports", force: :cascade do |t|
     t.string   "name"
@@ -55,6 +55,13 @@ ActiveRecord::Schema.define(version: 20160403223025) do
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "image_url"
   end
+
+  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
+  add_index "users", ["provider"], name: "index_users_on_provider"
+  add_index "users", ["uid"], name: "index_users_on_uid"
 
 end
