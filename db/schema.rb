@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330231248) do
+ActiveRecord::Schema.define(version: 20160403223025) do
 
   create_table "airports", force: :cascade do |t|
     t.string   "name"
@@ -49,5 +49,12 @@ ActiveRecord::Schema.define(version: 20160330231248) do
   end
 
   add_index "passengers", ["booking_id"], name: "index_passengers_on_booking_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
