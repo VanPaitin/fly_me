@@ -3,7 +3,6 @@ class BookingsController < ApplicationController
   before_action :set_flight_and_passengers, except: [:show]
   def new
     @booking = @flight.bookings.new
-    @booking.user_id = current_user.id
     @no_of_passengers.times { @booking.passengers.build }
   end
 
@@ -18,6 +17,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = @flight.bookings.new(booking_params)
+    @booking.user_id = current_user.id if current_user
     if @booking.save
       flash[:notice] = "This flight has been booked successfully"
       @booking.passengers.each do |passenger|

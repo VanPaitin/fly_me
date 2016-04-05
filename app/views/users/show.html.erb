@@ -1,5 +1,5 @@
 <% if current_user.bookings.count == 0 %>
-  <h1>You have no previous bookings<br>Try and make a new booking</h1>
+  <h1>You have no previous bookings<br>Try and make a <%= link_to "new booking", root_path %></h1>
 <% else %>
   <h2>
       You have made <%= pluralize(current_user.bookings.count, "booking") %>...
@@ -8,7 +8,7 @@
         <thead>
           <tr>
             <th>Booking Number:</th>
-            <th>Departing Airport</th>
+            <th>Departure Airport</th>
             <th>Destination Airport</th>
             <th>Departure Date</th>
             <th>Take-off Time</th>
@@ -19,7 +19,7 @@
         <tbody>
         <% current_user.bookings.each do |booking| %>
           <tr>
-            <td><%= booking.id %></td>
+            <td>00<%= booking.id %></td>
             <td><%= booking.flight.from_airport %></td>
             <td><%= booking.flight.to_airport %></td>
             <td><%= booking.flight.date %></td>
@@ -27,6 +27,8 @@
             <td><%= booking.passengers.count %></td>
             <td><%= booking.price %></td>
           </tr>
+        <% end %>
         </tbody>
       </table>
     <% end %>
+    <h3><%= link_to "Return Home", root_path %></h3>
