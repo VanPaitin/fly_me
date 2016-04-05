@@ -1,4 +1,18 @@
 
 <div class="navbar navbar-default">
     <%= link_to "Fly_me", root_url, class: "navbar-brand logo" %>
+    <% if current_user %>
+      <ul class="nav navbar-nav pull-right">
+        <li><%= current_user.name %></li>
+        <li><%= image_tag current_user.image_url, alt: current_user.name %></li>
+        <li><%= link_to 'Log Out', 'logout', method: :delete %></li>
+      </ul>
+    <% else %>
+        <ul class="nav navbar-nav">
+        <h5>You may sign in with any of the following</h5>
+          <li><%= link_to '<i class="fa fa-twitter-square"></i><br>Twitter'.html_safe, '/auth/twitter' %></li>
+          <li><%= link_to '<i class="fa fa-facebook-square"></i><br>Facebook'.html_safe, '/auth/facebook' %></li>
+          <li><%= link_to '<i class="fa fa-google"></i><br>Google'.html_safe, '/auth/google_oauth2' %></li>
+        </ul>
+    <% end %>
 </div>

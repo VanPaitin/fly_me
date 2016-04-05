@@ -30,7 +30,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "omniauth-oauth2", "~> 1.3.1"
 gem "omniauth-facebook"
 gem "omniauth-twitter"
-gem "omniauth-google-oauth2", "0.2.10"
+gem "omniauth-google-oauth2"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
