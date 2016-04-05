@@ -1,0 +1,32 @@
+<% if current_user.bookings.count == 0 %>
+  <h1>You have no previous bookings<br>Try and make a new booking</h1>
+<% else %>
+  <h2>
+      You have made <%= pluralize(current_user.bookings.count, "booking") %>...
+  </h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Booking Number:</th>
+            <th>Departing Airport</th>
+            <th>Destination Airport</th>
+            <th>Departure Date</th>
+            <th>Take-off Time</th>
+            <th>No. of passengers</th>
+            <th>Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% current_user.bookings.each do |booking| %>
+          <tr>
+            <td><%= booking.id %></td>
+            <td><%= booking.flight.from_airport %></td>
+            <td><%= booking.flight.to_airport %></td>
+            <td><%= booking.flight.date %></td>
+            <td><%= booking.flight.time %></td>
+            <td><%= booking.passengers.count %></td>
+            <td><%= booking.price %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>

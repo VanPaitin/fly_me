@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   delete '/logout' => "sessions#destroy"
-
+  resources :users, only: :show
   root "flights#index"
   resources :flights,  only:  :index do
     resources :bookings

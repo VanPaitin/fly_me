@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :bookings
   VALID_NAME_REGEX = /\A\D+/
   validates :name, presence: true, length: { maximum: 50 },
             format: { with: VALID_NAME_REGEX }

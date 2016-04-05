@@ -1,7 +1,9 @@
 
 <div class="row passenger_details">
     <div class="col-md-6 col-md-offset-3">
+    <% unless current_user %>
       <h5>Please, know that you might have to login in order to keep track of your bookings</h5>
+    <% end %>
       <div class="row">
         <h2>Passenger Details</h2>
         <p>Please enter passenger details for flight:</p>

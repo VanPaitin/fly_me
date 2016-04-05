@@ -1,5 +1,6 @@
 <div class="row search">
-
+  <% if current_user %>
+    <%= link_to "Past bookings", user_path(current_user) %>
   <div class="col-sm-6 col-sm-offset-3 well">
     <h3>Search for a flight</h3>
 
