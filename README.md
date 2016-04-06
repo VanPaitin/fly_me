@@ -3,17 +3,17 @@
 
 
 ## Introduction
-Hi,
+Hi everyone,
 I have implemented a flight booking system with rails.
-With this app, you can search for flights with or without dates. The  number of passengers you select will determine the number of passenger fields you'll have on your booking form.
-On successful booking of a flight, you will recieve a booking-success email.
-You will also have the option of paying via paypal or to proceed to your profile.
+With this app, you can search for flights within a limited number of days.
+
+The  number of passengers you select at the home page will not have any effect on the booking form. You are given a chance to dynamically add passengers depending on your needs. On successful booking of a flight, you will be taking to a page where you know your price and can see your registered passenger details. You will also recieve a booking-success email.
+
 The app has features to handle cancelling a booking before the day of the flight and also managing the number of passengers on a booking.
 You will also recieve a booking update email if you choose to manage your app.
-Check out the cool [app here](https://matflights.herokuapp.com/)!
+Check out the cool [app here](https://fly_me.herokuapp.com/)!
 Bug discoveries, suggestions and general feedback will always be appreciated.
 
-Olaide.
 
 ## Getting Started
 Getting started is extremely easy, you can either clone / fork this repository or download the entire project as a zip package and run locally.
@@ -72,29 +72,30 @@ If you want the tests to read more like a document then pass in these options to
 ## Application features
 * Flight search.
 * Flight booking.
-* Payment integration with paypal.
 * Booking cancellation before flight date.
 * Viewing past booking.
-* Booking management.
-* Email notification.
+* Manage bookings by adding or deleting passengers.
+* Efficient Email notification.
 * User can add or remove passenger on booking page.
 
 ## Application Limitations
 The app is a work in progress, as such, it has the following limitations among others.
-* Booking can not be done via any other payment gateway.
-* The app assumes that booking is cancelled when payment has not been made.
+
+* Payment has not been integrated into the site. So payment has to be done manually
+* The app does not have its own authenticaton system and relies on third-party apps for authentication of users integrity
+* The website use of design libraries is minimal and heavily employs just basic HTML/CSS
 * App doesn't have a private domain name yet.
 
 
 ## Project Website
-Click [here](https://matflights.herokuapp.com/) to proceed to the MatFlights app.
+Click [here](https://fly-me.herokuapp.com/) to proceed to **[Fly-me](https://fly-me.herokuapp.com/)**.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/andela-oojewale/matflights.
+Bug reports and pull requests are welcome on GitHub at https://github.com/andela-mpitan/fly-me.
 
-* Fork it ( https://github.com/andela-oojewale/matflights/fork)
+* [Fork it]( https://github.com/andela-mpitan/fly-me/fork)
 * Create your feature branch (git checkout -b my-new-feature)
-* Commit your changes (git commit -am 'Add some feature')
+* Commit your changes __*(git commit -am 'Add some feature')*__
 * Push to the branch (git push origin my-new-feature)
 * Create a new Pull Request
