@@ -1,13 +1,13 @@
 # Fly_me
 
-
+[![Code Climate](https://codeclimate.com/github/andela-mpitan/fly_me/badges/gpa.svg)](https://codeclimate.com/github/andela-mpitan/fly_me)  [![Test Coverage](https://codeclimate.com/github/andela-mpitan/fly_me/badges/coverage.svg)](https://codeclimate.com/github/andela-mpitan/fly_me/coverage) [![Circle CI](https://circleci.com/gh/andela-mpitan/fly_me.svg?style=svg)](https://circleci.com/gh/andela-mpitan/fly_me)
 
 ## Introduction
 Hi everyone,
 I have implemented a flight booking system with rails.
 With this app, you can search for flights within a limited number of days.
 
-The  number of passengers you select at the home page will not have any effect on the booking form. You are given a chance to dynamically add passengers depending on your needs. On successful booking of a flight, you will be taking to a page where you know your price and can see your registered passenger details. You will also recieve a booking-success email.
+The  number of passengers you select at the home page will not have any effect on the booking form. You are given a chance to dynamically add passengers depending on your needs. On successful booking of a flight, you will be taking to a page where you know the price charged and you can see your registered passenger(s) details. You will also recieve a booking-success email.
 
 The app has features to handle cancelling a booking before the day of the flight and also managing the number of passengers on a booking.
 You will also recieve a booking update email if you choose to manage your app.
