@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
     rescue
       flash[:warning] = "There was an error while trying to authenticate you..."
     end
-    redirect_to root_path
+    begin
+      redirect_to :back
+    rescue
+      redirect_to root_path
+    end
   end
 
   def destroy
@@ -15,6 +19,6 @@ class SessionsController < ApplicationController
       session.delete(:user_id)
       flash[:success] = 'You have logged out successfully'
     end
-    redirect_to root_path
+    redirect_to :back
   end
 end

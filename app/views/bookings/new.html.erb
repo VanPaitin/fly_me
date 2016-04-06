@@ -1,1 +1,65 @@
-<%= render :form %>
+
+<div class="row passenger_details">
+    <div class="col-md-6 col-md-offset-3">
+    <% unless current_user %>
+      <h5>Please, know that you might have to login in order to keep track of your bookings</h5>
+    <% end %>
+      <div class="row">
+        <h2>Passenger Details</h2>
+        <p>Please enter passenger details for flight:</p>
+        <h2>Price per passenger = $ 1,200</h2>
+        <div class=" col-md-12 well flight-details">
+          <div class"panel-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Flight Number:</th>
+                  <th>Departure Airport</th>
+                  <th>Destination Airport</th>
+                  <th>Departure Date</th>
+                  <th>Departure Time</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td><%= @flight.id %></td>
+                  <td><%= @flight.from_airport.name + ", " + @flight.from_airport.city %></td>
+                  <td><%= @flight.to_airport.name + ", " + @flight.to_airport.city %></td>
+                  <td><%= @flight.date.strftime("#{@flight.date.day.ordinalize} %B %Y") %></td>
+                  <td><%= @flight.time %></td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+          </div>
+
+      <%= form_for [@flight, @booking], :html => { :class => "form-horizontal" } do |f|  %>
+        <% if @booking.errors.any? %>
+          <div id="error_explanation">
+
+            <h2>
+              <%= pluralize(@booking.errors.count, "error") %>
+            </h2>
+
+            <ul>
+              <% @booking.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div id="passenger">
+          <%= f.fields_for :passengers do |passenger| %>
+          <%= render "passenger_fields", f: passenger %>
+          <% end %>
+        </div>
+        <div class="links">
+          <%= link_to_add_association 'Add Passenger', f, :passengers %>
+        </div>
+        <%= f.submit "Book Flight", class: "btn btn-success btn-lg col-md-4 col-md-offset-4" %>
+    <% end %>
+  </div>
+</div>

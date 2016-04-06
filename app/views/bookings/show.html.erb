@@ -41,11 +41,11 @@ Here are your flight details below</h1>
       </thead>
 
       <tbody>
-        <% @booking.passengers.each do |p| %>
+        <% @booking.passengers.each do |passenger| %>
           <tr>
-            <td><%= p.name %></td>
-            <td><%= p.email %></td>
-            <td><%= p.phone_number %></td>
+            <td><%= passenger.name %></td>
+            <td><%= passenger.email %></td>
+            <td><%= passenger.phone_number %></td>
           </tr>
         <% end %>
       </tbody>

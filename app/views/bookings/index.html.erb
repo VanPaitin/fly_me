@@ -21,8 +21,8 @@
         <% @bookings.each do |booking| %>
           <tr>
             <td>00<%= booking.id %></td>
-            <td><%= booking.flight.from_airport %></td>
-            <td><%= booking.flight.to_airport %></td>
+            <td><%= booking.flight.from_airport.name + ", " + booking.flight.from_airport.city %></td>
+            <td><%= booking.flight.to_airport.name + ", " + booking.flight.to_airport.city %></td>
             <td><%= booking.flight.date.strftime("%d/%m/%Y") %></td>
             <td><%= booking.flight.time %></td>
             <td><%= booking.passengers.count %></td>

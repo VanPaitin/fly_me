@@ -4,4 +4,8 @@ class UserMailer < ApplicationMailer
     @passenger = passenger
     mail(to: @passenger.email, subject: "Booking successful")
   end
+  def updated(passenger)
+    @passenger = passenger
+    mail(to: @passenger.email, subject: "Successfully updated bookings")
+  end
 end

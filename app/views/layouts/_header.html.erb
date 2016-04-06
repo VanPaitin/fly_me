@@ -5,7 +5,7 @@
       <ul class="nav navbar-nav pull-right">
         <li><%= current_user.name %></li>
         <li><%= image_tag current_user.image_url, alt: current_user.name %></li>
-        <li><%= link_to 'Log Out', 'logout', method: :delete %></li>
+        <li><%= link_to 'Log Out', '/logout', method: :delete %></li>
       </ul>
     <% else %>
         <ul class="nav navbar-nav">
