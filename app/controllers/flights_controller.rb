@@ -4,12 +4,7 @@ class FlightsController < ApplicationController
       [(airport.name + ", " + airport.city), airport.id]
     end
     set_variables
-    if params[:commit] == "Search"
-      if params[:from_airport_id] == params[:to_airport_id]
-        flash[:danger] = "Your Departure and Destination "\
-        "Airports Can Not Be the Same"
-      end
-    end
+    same_airport
   end
 
   private
@@ -23,5 +18,14 @@ class FlightsController < ApplicationController
     @passengers = params[:passengers]
     @flights = Flight.search(params[:from_airport_id],
                              params[:to_airport_id], params[:date])
+  end
+
+  def same_airport
+    if params[:commit] == "Search"
+      if params[:from_airport_id] == params[:to_airport_id]
+        flash[:danger] = "Your Departure and Destination "\
+        "Airports Can Not Be the Same"
+      end
+    end
   end
 end

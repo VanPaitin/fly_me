@@ -1,6 +1,6 @@
 # Fly_me
 
-
+[![Code Climate](https://codeclimate.com/github/andela-mpitan/fly_me/badges/gpa.svg)](https://codeclimate.com/github/andela-mpitan/fly_me)  [![Test Coverage](https://codeclimate.com/github/andela-mpitan/fly_me/badges/coverage.svg)](https://codeclimate.com/github/andela-mpitan/fly_me/coverage)
 
 ## Introduction
 Hi everyone,

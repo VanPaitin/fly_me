@@ -19,7 +19,7 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem "websocket-rails"
 
-
+gem "codeclimate-test-reporter", group: :test, require: nil
 group :development, :test do
   gem "capybara"
   gem "database_cleaner"
