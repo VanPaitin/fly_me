@@ -24,9 +24,7 @@ class BookingsController < ApplicationController
       flash[:notice] = "Please add at least one passenger"
       redirect_to :back
     else
-      @booking = @flight.bookings.new(booking_params)
-      @booking.price = booking_params[:passengers_attributes].keys.count * 1200
-      save
+      set_price
     end
   end
 
@@ -48,30 +46,45 @@ class BookingsController < ApplicationController
     redirect_to flight_bookings_path
   end
   private
+
+  def set_price
+    @booking = @flight.bookings.new(booking_params)
+    @booking.price = booking_params[:passengers_attributes].keys.count * 1200
+    save
+  end
+
   def save
     @booking.user_id = current_user.id if current_user
     if @booking.save
       flash[:notice] = "This flight has been booked successfully"
-      @booking.passengers.each do |passenger|
-        UserMailer.thanks(passenger).deliver_now
-      end
-      redirect_to flight_booking_path(@booking.flight, @booking)
+      thanks_mail
     else
       render :new
     end
+  end
+
+  def thanks_mail
+    @booking.passengers.each do |passenger|
+      UserMailer.thanks(passenger).deliver_now
+    end
+    redirect_to flight_booking_path(@booking.flight, @booking)
   end
 
   def price_update
     @booking.price = @booking.passengers.count * 1200
     if @booking.save
       flash[:notice] = "This flight has been updated successfully"
-      @booking.passengers.each do |passenger|
-        UserMailer.updated(passenger).deliver_now
-      end
-      redirect_to flight_booking_path(@booking.flight, @booking)
+      mail_update
     else
       render :new
     end
+  end
+
+  def mail_update
+    @booking.passengers.each do |passenger|
+      UserMailer.updated(passenger).deliver_now
+    end
+    redirect_to flight_booking_path(@booking.flight, @booking)
   end
 
 end
