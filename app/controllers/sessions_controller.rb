@@ -7,9 +7,13 @@ class SessionsController < ApplicationController
     rescue
       flash[:warning] = "There was an error while trying to authenticate you..."
     end
-    begin
+    re_direct
+  end
+
+  def re_direct
+    if @user.provider == "facebook"
       redirect_to :back
-    rescue
+    else
       redirect_to root_path
     end
   end
@@ -19,6 +23,6 @@ class SessionsController < ApplicationController
       session.delete(:user_id)
       flash[:success] = 'You have logged out successfully'
     end
-    redirect_to :back
+    redirect_to root_path
   end
 end
