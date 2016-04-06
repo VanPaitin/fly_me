@@ -1,18 +1,19 @@
 
 <div class="navbar navbar-default">
+  <i class="fa fa-plane fa-5x link-btn"></i>
     <%= link_to "Fly_me", root_url, class: "navbar-brand logo" %>
     <% if current_user %>
-      <ul class="nav navbar-nav pull-right">
-        <li><%= current_user.name %></li>
-        <li><%= image_tag current_user.image_url, alt: current_user.name %></li>
-        <li><%= link_to 'Log Out', '/logout', method: :delete %></li>
+      <ul class="nav navbar-nav pull-right img-caption">
+        <li class="link-btn" style="margin-right:10px;"><%= current_user.name %> </li>
+        <li><%= image_tag current_user.image_url, alt: current_user.name, class: "img-circle" %></li>
+        <li><%= link_to "<span class='link-btn'>Log Out</span>".html_safe, '/logout', method: :delete %></li>
       </ul>
     <% else %>
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav pull-right link-btn">
         <h5>You may sign in with any of the following</h5>
-          <li><%= link_to '<i class="fa fa-twitter-square"></i><br>Twitter'.html_safe, '/auth/twitter' %></li>
-          <li><%= link_to '<i class="fa fa-facebook-square"></i><br>Facebook'.html_safe, '/auth/facebook' %></li>
-          <li><%= link_to '<i class="fa fa-google"></i><br>Google'.html_safe, '/auth/google_oauth2' %></li>
+          <li><%= link_to '<i class="fa fa-twitter-square link-btn"></i><br><span class="link-btn">Twitter</span>'.html_safe, '/auth/twitter' %></li>
+          <li><%= link_to '<i class="fa fa-facebook-square link-btn"></i><br><span class="link-btn">Facebook</span>'.html_safe, '/auth/facebook' %></li>
+          <li><%= link_to '<i class="fa fa-google link-btn"></i><br><span class="link-btn">Google</span>'.html_safe, '/auth/google_oauth2' %></li>
         </ul>
     <% end %>
 </div>

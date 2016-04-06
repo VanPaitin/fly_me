@@ -1,11 +1,11 @@
 <% if @bookings.count == 0 %>
-  <h1>You have no previous bookings<br>Try and make a <%= link_to "new booking", root_path %></h1>
+  <h1 class="text-danger">You have no previous bookings<br>Try and make a <%= link_to "new booking", root_path %></h1>
 <% else %>
-  <h2>
+  <h2 class= "text-warning">
       You have made <%= pluralize(@bookings.count, "booking") %>...
   </h2>
       <table class="table">
-        <thead>
+        <thead class="text-info">
           <tr>
             <th>Booking Number:</th>
             <th>Departure Airport</th>
@@ -37,4 +37,7 @@
         </tbody>
       </table>
     <% end %>
-    <h4><%= link_to "Return Home", root_path %></h4>
+    <h4><%= link_to root_path do %>
+        <i class="fa fa-home"></i> Go Home
+        <% end %>
+    </h4>

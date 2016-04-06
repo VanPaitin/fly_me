@@ -2,12 +2,12 @@
 <h1>Your Flight has Been Booked!<br>
 Here are your flight details below</h1>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3 well booking">
+  <div class="col-md-6 col-md-offset-3 well booking" style="background-color: #BFD2EA">
 
-    <h3>Flight Details</h3>
-    <h4>Total Price: $ <%= @booking.price %></h4>
+    <h3 class= "text-danger">Flight Details</h3>
+    <h4 class= "text-danger">Total Price: $ <%= @booking.price %></h4>
     <table class="table">
-      <thead>
+      <thead class= "text-info">
         <tr>
           <th>Booking Number:</th>
           <th>Departing Airport</th>

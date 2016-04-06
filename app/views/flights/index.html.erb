@@ -1,7 +1,5 @@
 <div class="row search">
-  <% if current_user %>
-    <%= link_to "Manage/View Past bookings", 'user/bookings' %>
-  <% end %>
+
   <div class="col-sm-6 col-sm-offset-3 well">
     <h3>Search for a flight</h3>
 
@@ -28,6 +26,12 @@
         </div>
 
         <%= submit_tag "Search", class: "btn btn-primary col-md-4 col-md-offset-8" %>
+      <% end %>
+
+
+
+      <% if current_user %>
+        <%= link_to "Manage/View Past bookings", 'user/bookings' %>
       <% end %>
   </div>
 </div>
