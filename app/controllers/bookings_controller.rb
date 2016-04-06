@@ -40,6 +40,13 @@ class BookingsController < ApplicationController
       price_update
     end
   end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    flash[:notice] = "You have just deleted a booking"
+    redirect_to flight_bookings_path
+  end
   private
   def save
     @booking.user_id = current_user.id if current_user
