@@ -1,5 +1,12 @@
-
-
+require "codeclimate-test-reporter"
+require 'simplecov'
+SimpleCov.start do
+  formatter SimpleCov::Formatter::MultiFormatter.new(CodeClimate::TestReporter::Formatter)
+end
+require 'capybara/rspec'
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
