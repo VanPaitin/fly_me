@@ -43,4 +43,10 @@ RSpec.describe Passenger, type: :model do
       expect(passenger.email).to eql passenger_email.downcase
     end
   end
+  describe ".validate_phone_number" do
+    it "ensures phone number is valid" do
+      passenger = build(:passenger, phone_number: "--")
+      expect(passenger.valid?).to be false
+    end
+  end
 end
