@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Flight, type: :feature do
-
   it "should contain the site name and a basic instruction" do
     create(:flight)
     visit "/"
@@ -9,6 +8,5 @@ RSpec.describe Flight, type: :feature do
     expect(page).to have_content "Search for a flight"
   end
   it "should have for input fields" do
-
   end
 end

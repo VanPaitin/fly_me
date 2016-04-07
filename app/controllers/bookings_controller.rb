@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   def index
     @bookings = current_user.bookings
   end
+
   def new
     @flight = Flight.find(params[:flight_id])
     @booking = @flight.bookings.new
@@ -20,7 +21,7 @@ class BookingsController < ApplicationController
 
   def create
     @flight = Flight.find(params[:flight_id])
-    if params[:booking] == nil
+    if params[:booking].nil?
       flash[:notice] = "Please add at least one passenger"
       redirect_to :back
     else
@@ -30,7 +31,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    if params[:booking] == nil
+    if params[:booking].nil?
       flash[:notice] = "Please add at least one passenger"
       redirect_to :back
     else
@@ -45,6 +46,7 @@ class BookingsController < ApplicationController
     flash[:notice] = "You have just deleted a booking"
     redirect_to flight_bookings_path
   end
+
   private
 
   def set_price
@@ -86,5 +88,4 @@ class BookingsController < ApplicationController
     end
     redirect_to flight_booking_path(@booking.flight, @booking)
   end
-
 end

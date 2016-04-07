@@ -20,23 +20,23 @@ RSpec.describe Passenger, type: :model do
       expect(passenger.valid?).to be true
     end
   end
-  describe 'email validations' do
-    it 'email must be present' do
+  describe "email validations" do
+    it "email must be present" do
       passenger = build(:passenger, email: "")
       expect(passenger.valid?).to be false
     end
-    it 'email should not be too long' do
-      passenger = build(:passenger, email: 'a' * 244 + '@example.com')
+    it "email should not be too long" do
+      passenger = build(:passenger, email: "a" * 244 + "@example.com")
       expect(passenger.valid?).to be false
     end
-    it 'email validation should accept only valid addresses' do
-      invalid_address = 'passenger@example.@com'
+    it "email validation should accept only valid addresses" do
+      invalid_address = "passenger@example.@com"
       passenger = build(:passenger, email: invalid_address)
       expect(passenger.valid?).to be false
     end
   end
   describe '#before_save' do
-    it 'should ensure all emails are downcased at the database level' do
+    it "should ensure all emails are downcased at the database level" do
       passenger_email = "PASSENGER@EXAMPLE.COM"
       passenger = build(:passenger, email: passenger_email)
       passenger.save

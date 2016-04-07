@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Booking, type: :model do
-  it { is_expected.to belong_to (:flight) }
-  it { is_expected.to belong_to (:user)}
+  it { is_expected.to belong_to :flight }
+  it { is_expected.to belong_to :user }
   it { is_expected.to have_many(:passengers) }
   it { is_expected.to accept_nested_attributes_for :passengers }
   describe ".validate_presence_of_flight_id" do
@@ -11,5 +11,4 @@ RSpec.describe Booking, type: :model do
       expect(booking.valid?).to be false
     end
   end
-
 end
