@@ -37,6 +37,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    archive-zip (0.7.0)
+      io-like (~> 0.3.0)
     arel (6.0.3)
     autoprefixer-rails (6.3.3.1)
       execjs
@@ -56,6 +58,9 @@ GEM
       xpath (~> 2.0)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
+    chromedriver-helper (1.0.0)
+      archive-zip (~> 0.7.0)
+      nokogiri (~> 1.6)
     cocoon (1.2.9)
     codeclimate-test-reporter (0.5.0)
       simplecov (>= 0.7.1, < 1.0.0)
@@ -108,6 +113,7 @@ GEM
     highline (1.7.8)
     hiredis (0.6.1)
     i18n (0.7.0)
+    io-like (0.3.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -314,6 +320,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   capybara
+  chromedriver-helper
   cocoon
   codeclimate-test-reporter
   coffee-rails (~> 4.1.0)

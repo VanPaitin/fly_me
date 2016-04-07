@@ -40,6 +40,7 @@ end
 group :test do
   gem "factory_girl_rails"
   gem "shoulda-matchers", "~> 3.1"
+  gem "chromedriver-helper"
 end
 group :production do
   gem "pg", "0.17.1"
