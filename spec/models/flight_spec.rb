@@ -20,4 +20,12 @@ RSpec.describe Flight, type: :model do
                                        formatted_initial_date]
     end
   end
+  describe ".correct_date" do
+    it "can convert a date string to a date range" do
+      sample_date = Time.now.to_s
+      real_date = sample_date.to_date
+      expect(Flight.correct_date(sample_date)).to eql real_date.
+        beginning_of_day..real_date.end_of_day
+    end
+  end
 end

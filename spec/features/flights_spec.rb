@@ -7,6 +7,9 @@ RSpec.describe Flight, type: :feature do
     expect(page).to have_content "Fly_me"
     expect(page).to have_content "Search for a flight"
   end
-  it "should have for input fields" do
+  it "should go to the flights controller" do
+    visit root_path
+    click_button "Search"
+    expect(current_path).to eql flights_path
   end
 end
