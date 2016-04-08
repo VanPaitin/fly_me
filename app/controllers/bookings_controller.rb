@@ -61,6 +61,7 @@ class BookingsController < ApplicationController
       flash[:notice] = "This flight has been booked successfully"
       thanks_mail
     else
+      @flight = @booking.flight
       render :new
     end
   end
@@ -78,6 +79,7 @@ class BookingsController < ApplicationController
       flash[:notice] = "This flight has been updated successfully"
       mail_update
     else
+      @flight = @booking.flight
       render :new
     end
   end

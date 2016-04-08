@@ -20,6 +20,4 @@ RSpec.describe Flight, type: :model do
                                        formatted_initial_date]
     end
   end
-  describe ".search" do
-
 end
