@@ -7,15 +7,7 @@ class SessionsController < ApplicationController
     rescue
       flash[:warning] = "There was an error while trying to authenticate you..."
     end
-    re_direct
-  end
-
-  def re_direct
-    if @user.provider == "facebook"
-      redirect_to :back
-    else
-      redirect_to root_path
-    end
+    redirect_to root_path
   end
 
   def destroy
