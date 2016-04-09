@@ -20,6 +20,7 @@ class FlightsController < ApplicationController
       if params[:from_airport_id] == params[:to_airport_id]
         flash[:danger] = "Your Departure and Destination "\
         "Airports Can Not Be the Same"
+        redirect_to :back
       end
     end
   end

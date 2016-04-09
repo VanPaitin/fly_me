@@ -20,10 +20,16 @@ body{
   padding: 25px 15px;
   font-weight: 400;
 }
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+}
 
 .navbar-default{
   background-color: #2980B9;
-  height: 90px;
+  height: auto;
   border-radius: 0;
   border: 0;
 }
@@ -48,8 +54,11 @@ body{
 ======================*/
 
 .search{
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 100px;
+  margin-bottom: 60px;
+}
+.mid {
+  text-align: center;
 }
 
 .search-results{
@@ -122,10 +131,9 @@ body{
 
 footer {
   position: absolute;
-  bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 90px;
+  height: auto;
+  bottom: 0;
   background-color: #4e5d6c;
 }
 
@@ -168,4 +176,7 @@ footer {
 }
 .link-btn {
   color: #fff;
+}
+.below{
+  margin-top: 30px;
 }

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :airport do
-    name "Murtala International"
+    sequence(:name) { |n| "Murtala International, Lagos #{n}" }
     city "Lagos"
   end
 end
