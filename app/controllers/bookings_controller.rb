@@ -49,6 +49,12 @@ class BookingsController < ApplicationController
 
   private
 
+  def booking_params
+    params.require(:booking).permit(passengers_attributes: [:id, :name, :email,
+                                                            :phone_number,
+                                                            :_destroy])
+  end
+
   def set_price
     @booking = @flight.bookings.new(booking_params)
     @booking.price = booking_params[:passengers_attributes].keys.count * 1200

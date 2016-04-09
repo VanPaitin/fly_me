@@ -4,16 +4,15 @@ class Flight < ActiveRecord::Base
   has_many :bookings
   class << self
     def date_list
-      dates = Flight.all.order(date: :asc)
+      dates = all.order(date: :asc)
       dates.map do |flight|
         flight.date.strftime("#{flight.date.day.ordinalize} %B %Y")
       end.uniq
     end
 
-    def search(depart, dest, date)
-      Flight.where(from_airport_id: depart,
-                   to_airport_id: dest,
-                   date: Flight.correct_date(date))
+    def search(hash)
+      hash[:date] = correct_date(hash[:date])
+      where(hash)
     end
 
     def correct_date(date)
