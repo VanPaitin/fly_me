@@ -7,6 +7,8 @@ RSpec.describe Flight, type: :model do
   it { is_expected.to belong_to(:from_airport).class_name("Airport") }
   it { is_expected.to belong_to(:to_airport).class_name("Airport") }
   it { is_expected.to have_many(:bookings) }
+  it { is_expected.to validate_presence_of(:from_airport_id) }
+  it { is_expected.to validate_presence_of(:to_airport_id) }
   describe ".date_list" do
     it "should return an array of dates" do
       initial_time = Time.now

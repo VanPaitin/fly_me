@@ -2,6 +2,8 @@ class Flight < ActiveRecord::Base
   belongs_to :from_airport, class_name: "Airport"
   belongs_to :to_airport, class_name: "Airport"
   has_many :bookings
+  validates :to_airport_id, presence: true
+  validates :from_airport_id, presence: true
   class << self
     def date_list
       dates = all.order(date: :asc)
