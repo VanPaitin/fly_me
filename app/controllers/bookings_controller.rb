@@ -1,12 +1,10 @@
 class BookingsController < ApplicationController
   before_action
   def index
-    begin
-      @bookings = current_user.bookings
-    rescue
-      flash[:notice] = "You are not authorized to view this page"
-      redirect_to root_path
-    end
+    @bookings = current_user.bookings
+  rescue
+    flash[:notice] = "You are not authorized to view this page"
+    redirect_to root_path
   end
 
   def new

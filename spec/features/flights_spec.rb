@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Flight, type: :feature do #, js: true
+RSpec.describe Flight, type: :feature do # , js: true
   before(:all) do
     Airport.destroy_all
     @flight = create(:flight)
@@ -21,10 +21,10 @@ RSpec.describe Flight, type: :feature do #, js: true
       select(airport.name, from: "from_airport_id")
       select(airport2.name, from: "to_airport_id")
       select(@flight.date.strftime("#{@flight.date.day.ordinalize} %B %Y"),
-        from: "date")
+             from: "date")
       click_button "Search"
     end
-    it { expect(current_path).to eql flights_path}
+    it { expect(current_path).to eql flights_path }
     it { expect(page).to have_content "Choose a flight" }
     it { expect(page).to have_content "Flight No:" }
   end
