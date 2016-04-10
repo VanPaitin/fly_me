@@ -1,9 +1,8 @@
 class BookingsController < ApplicationController
-  before_action
   def index
     @bookings = current_user.bookings
   rescue
-    flash[:notice] = "You are not authorized to view this page"
+    flash[:notice] = "Please log in first"
     redirect_to root_path
   end
 
@@ -34,13 +33,8 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    if params[:booking].nil?
-      flash[:notice] = "Please add at least one passenger"
-      redirect_to :back
-    else
-      @booking.update(booking_params)
-      price_update
-    end
+    a = params[:booking][:passengers_attributes].values
+    passenger_integrity(a)
   end
 
   def destroy
@@ -72,6 +66,16 @@ class BookingsController < ApplicationController
     else
       @flight = @booking.flight
       render :new
+    end
+  end
+
+  def passenger_integrity(a)
+    if a.all? { |i| i.values[3] != "false" }
+      flash[:notice] = "Please add at least one passenger"
+      redirect_to :back
+    else
+      @booking.update(booking_params)
+      price_update
     end
   end
 
