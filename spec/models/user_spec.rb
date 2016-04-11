@@ -34,6 +34,9 @@ RSpec.describe User, type: :model do
     end
   end
   describe ".from_omniauth" do
+    before do
+      User.destroy_all
+    end
     it "can find or create a user" do
       expect(User.all.count).to eql 0
       User.from_omniauth(authenticator)
