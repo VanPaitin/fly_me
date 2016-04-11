@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   delete '/logout' => "sessions#destroy"
   root "flights#index"
-  resources :bookings, only: [:new, :edit]
+  resources :bookings, only: [:new, :edit, :index]
   resources :flights,  only:  :index do
     resources :bookings
   end

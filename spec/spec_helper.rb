@@ -5,7 +5,7 @@ SimpleCov.start do
 end
 require 'capybara/rspec'
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  Capybara::Selenium::Driver.new(app)
 end
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
