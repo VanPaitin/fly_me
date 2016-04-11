@@ -27,6 +27,6 @@ RSpec.describe Flight, type: :feature do # , js: true
     it { expect(current_path).to eql flights_path }
     it { expect(page).to have_content "Choose a flight" }
     it { expect(page).to have_content "Flight No:" }
-    it { expect(page).to have_selector(:link_or_button, 'Continue')}
+    it { expect(page).to have_selector(:link_or_button, "Continue") }
   end
 end
