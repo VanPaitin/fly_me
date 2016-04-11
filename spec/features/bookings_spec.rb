@@ -13,7 +13,7 @@ RSpec.describe Booking, type: :feature do
     @flight = create(:flight)
   end
   describe "anonymous user" do
-    context "book flight with valid passenger detail", js: true do
+    context "book flight with valid passenger detail" do
       before(:each) do
         visit root_path
         airport = Airport.first
