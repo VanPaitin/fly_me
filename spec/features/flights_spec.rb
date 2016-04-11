@@ -29,4 +29,20 @@ RSpec.describe Flight, type: :feature do # , js: true
     it { expect(page).to have_content "Flight No:" }
     it { expect(page).to have_selector(:link_or_button, "Continue") }
   end
+  describe "cannot book flight with same destination/departure airports" do
+    before do
+      visit root_path
+      airport = Airport.first
+      airport2 = Airport.first
+      select(airport.name, from: "from_airport_id")
+      select(airport2.name, from: "to_airport_id")
+      select(@flight.date.strftime("#{@flight.date.day.ordinalize} %B %Y"),
+             from: "date")
+      click_button "Search"
+    end
+    it do
+      expect(page).to have_content("Your Departure and Destination "\
+        "Airports Can Not Be the Same")
+    end
+  end
 end

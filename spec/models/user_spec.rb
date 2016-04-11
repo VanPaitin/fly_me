@@ -22,12 +22,10 @@ RSpec.describe User, type: :model do
     end
   end
   describe "uid must be present" do
-    it "uid must be present" do
+    it "uid and authentication provider must be present" do
       user = build(:user, uid: nil)
       expect(user.valid?).to be false
     end
-  end
-  describe "authentication provider must be present" do
     it "authentication provider must be present" do
       user = build(:user, provider: nil)
       expect(user.valid?).to be false
