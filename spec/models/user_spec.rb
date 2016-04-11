@@ -21,19 +21,22 @@ RSpec.describe User, type: :model do
       expect(user.valid?).to be false
     end
   end
-  describe ".validate_uid" do
+  describe "uid must be present" do
     it "uid must be present" do
       user = build(:user, uid: nil)
       expect(user.valid?).to be false
     end
   end
-  describe ".validate_provider" do
+  describe "authentication provider must be present" do
     it "authentication provider must be present" do
       user = build(:user, provider: nil)
       expect(user.valid?).to be false
     end
   end
   describe ".from_omniauth" do
+    before do
+      User.destroy_all
+    end
     it "can find or create a user" do
       expect(User.all.count).to eql 0
       User.from_omniauth(authenticator)

@@ -1,7 +1,9 @@
 class BookingsController < ApplicationController
-  include BookingsHelper
   def index
     @bookings = current_user.bookings
+  rescue
+    flash[:notice] = "Please log in first"
+    redirect_to root_path
   end
 
   def new
@@ -31,13 +33,8 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    if params[:booking].nil?
-      flash[:notice] = "Please add at least one passenger"
-      redirect_to :back
-    else
-      @booking.update(booking_params)
-      price_update
-    end
+    a = params[:booking][:passengers_attributes].values
+    passenger_integrity(a)
   end
 
   def destroy
@@ -48,6 +45,12 @@ class BookingsController < ApplicationController
   end
 
   private
+
+  def booking_params
+    params.require(:booking).permit(passengers_attributes: [:id, :name, :email,
+                                                            :phone_number,
+                                                            :_destroy])
+  end
 
   def set_price
     @booking = @flight.bookings.new(booking_params)
@@ -63,6 +66,16 @@ class BookingsController < ApplicationController
     else
       @flight = @booking.flight
       render :new
+    end
+  end
+
+  def passenger_integrity(a)
+    if a.all? { |i| i.values[3] != "false" }
+      flash[:notice] = "Please add at least one passenger"
+      redirect_to :back
+    else
+      @booking.update(booking_params)
+      price_update
     end
   end
 

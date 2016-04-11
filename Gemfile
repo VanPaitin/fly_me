@@ -25,6 +25,7 @@ group :development, :test do
   gem "capybara"
   gem "database_cleaner"
   gem "pry"
+  gem "pry-nav"
   gem "pry-rails"
   gem "rspec-rails"
   gem "selenium-webdriver"

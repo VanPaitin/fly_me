@@ -1,43 +1,26 @@
 <% if @bookings.count == 0 %>
   <h1 class="text-danger">You have no previous bookings<br>Try and make a <%= link_to "new booking", root_path %></h1>
 <% else %>
-  <h2 class= "text-warning">
+  <h1 class= "text-danger">
       You have made <%= pluralize(@bookings.count, "booking") %>...
-  </h2>
-      <table class="table">
-        <thead class="text-info">
-          <tr>
-            <th>Booking Number:</th>
-            <th>Departure Airport</th>
-            <th>Destination Airport</th>
-            <th>Departure Date</th>
-            <th>Take-off Time</th>
-            <th>No. of passengers</th>
-            <th>Total Price</th>
-            <th>Time of booking</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @bookings.each do |booking| %>
-          <tr>
-            <td>00<%= booking.id %></td>
-            <td><%= booking.flight.from_airport.name + ", " + booking.flight.from_airport.city %></td>
-            <td><%= booking.flight.to_airport.name + ", " + booking.flight.to_airport.city %></td>
-            <td><%= booking.flight.date.strftime("%d/%m/%Y") %></td>
-            <td><%= booking.flight.time %></td>
-            <td><%= booking.passengers.count %></td>
-            <td>$ <%= booking.price %></td>
-            <td><%= booking.updated_at %></td>
-            <% if booking.flight.date > Time.now %>
-            <td><%= link_to "Edit", edit_booking_path(booking) %></td>
-            <td><%= link_to "Delete", flight_booking_path(booking.flight, booking), method: :delete, data: {confirm: "Are you sure you want to delete this booking?"} %></td>
-            <% end %>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+  </h1>
+      <% @bookings.each do |booking| %>
+       <h4> <span class= "text-warning">Booking Number: </span><strong>00<%= booking.id %></strong></h4>
+       <h4> <span class= "text-warning">Departure Airport: </span><strong><%= booking.flight.from_airport.name + ", " + booking.flight.from_airport.city %></strong></h4>
+       <h4> <span class= "text-warning">Destination Airport: </span><strong><%= booking.flight.to_airport.name + ", " + booking.flight.to_airport.city %></strong></h4>
+       <h4> <span class= "text-warning">Departure Date: </span><strong><%= booking.flight.date.strftime("%d/%m/%Y") %></strong></h4>
+       <h4> <span class= "text-warning">Take-off Time: </span><strong><%= booking.flight.time %></strong></h4>
+       <h4> <span class= "text-warning">No. of passengers: </span><strong><%= booking.passengers.count %></strong></h4>
+       <h4> <span class= "text-warning">Total Price: </span><strong></strong>$ <%= booking.price %></h4>
+       <h4> <span class= "text-warning">Time of booking: </span><strong><%= booking.updated_at %></strong></h4>
+       <%  if booking.flight.date > Time.now %>
+         <h5><%= link_to "Edit", edit_booking_path(booking) %></h5>
+         <h5><%= link_to "Delete", flight_booking_path(booking.flight, booking), method: :delete, data: {confirm: "Are you sure you want to delete this booking?"} %></h5>
+         <h1>--------------------------------------------------------------------------</h1>
+       <% end %>
+      <% end %>
     <% end %>
     <h4><%= link_to root_path do %>
-        <i class="fa fa-home"></i> Go Home
-        <% end %>
+      <i class="fa fa-home"></i> Go Home
+      <% end %>
     </h4>

@@ -2,33 +2,17 @@
 <h1>Your Flight has Been Booked!<br>
 Here are your flight details below</h1>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3 well booking" style="background-color: #BFD2EA">
+  <div class="col-md-6 col-md-offset-3 booking" style="background-color: #BFD2EA">
 
-    <h3 class= "text-danger">Flight Details</h3>
-    <h4 class= "text-danger">Total Price: $ <%= @booking.price %></h4>
-    <table class="table">
-      <thead class= "text-info">
-        <tr>
-          <th>Booking Number:</th>
-          <th>Departing Airport</th>
-          <th>Destination Airport</th>
-          <th>Departure Date</th>
-          <th>Departure Time</th>
-          <th>Duration</th>
-        </tr>
-      </thead>
+    <h1>Flight Details</h3>
+    <h3> <span class= "text-warning">Total Price: </span><strong>$ <%= @booking.price %></strong></h4>
 
-      <tbody>
-        <tr>
-          <td>00<%= @booking.id %></td>
-          <td><%= "#{@booking.flight.from_airport.name}, #{@booking.flight.from_airport.city}" %></td>
-          <td><%= "#{@booking.flight.to_airport.name}, #{@booking.flight.to_airport.city}" %></td>
-          <td><%= @booking.flight.date.strftime("#{@booking.flight.date.day.ordinalize} %B %Y") %></td>
-          <td><%= @booking.flight.time %></td>
-          <td><%= @booking.flight.duration %> hours </td>
-        </tr>
-      </tbody>
-    </table>
+    <h3>  <span class= "text-warning">Booking Number: </span><strong> 00<%= @booking.id %> </strong></h3>
+    <h3>  <span class= "text-warning">Departure Airport: </span><strong> <%= "#{@booking.flight.from_airport.name}, #{@booking.flight.from_airport.city}" %></strong></h3>
+    <h3>  <span class= "text-warning">Destination Airport: </span><strong> <%= "#{@booking.flight.to_airport.name}, #{@booking.flight.to_airport.city}" %></strong></h3>
+    <h3>  <span class= "text-warning">Departure Date: </span><strong> <%= @booking.flight.date.strftime("#{@booking.flight.date.day.ordinalize} %B %Y") %></strong></h3>
+    <h3>  <span class= "text-warning">Departure Time: </span><strong> <%= @booking.flight.time %> </strong></h3>
+    <h3>  <span class= "text-warning">Duration: </span><strong> <%= @booking.flight.duration %> hours </strong></h3>
 
     <h3>Passenger details</h3>
     <table class="table">
@@ -51,7 +35,16 @@ Here are your flight details below</h1>
       </tbody>
     </table>
     <h3>You will receive a confirmation email soon enough</h3>
-    <h4>It is now safe to close this window or you may decide<br>
-    to make another booking <%= link_to "Here", root_path %>.</h4>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <h4>It is now safe to close this window or you may decide<br>
+          to make another booking <%= link_to "Here", root_path %>.</h4>
+      </div>
+
+      <div class="col-sm-6 offset-s2 pull-right bookings-btn-container">
+        <%= link_to "Go to your bookings list", user_bookings_path, class: "btn btn-primary bookings-btn" %>
+      </div>
+    </div>
   </div>
 </div>
