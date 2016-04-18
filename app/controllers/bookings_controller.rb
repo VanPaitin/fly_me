@@ -1,9 +1,7 @@
 class BookingsController < ApplicationController
+  before_action :ensure_login, only: :index
   def index
     @bookings = current_user.bookings
-  rescue
-    flash[:notice] = "Please log in first"
-    redirect_to root_path
   end
 
   def new
@@ -102,5 +100,12 @@ class BookingsController < ApplicationController
       UserMailer.updated(passenger).deliver_now
     end
     redirect_to flight_booking_path(@booking.flight, @booking)
+  end
+  
+  def ensure_login
+    unless current_user
+      flash[:notice] = "Please log in first"
+      redirect_to root_path
+    end
   end
 end

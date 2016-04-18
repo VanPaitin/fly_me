@@ -11,7 +11,7 @@ The  number of passengers you select at the home page will not have any effect o
 
 The app has features to handle cancelling a booking before the day of the flight and also managing the number of passengers on a booking.
 You will also recieve a booking update email if you choose to manage your app.
-Check out the cool [app here](https://fly_me.herokuapp.com/)!
+
 Bug discoveries, suggestions and general feedback will always be appreciated.
 
 
@@ -88,7 +88,7 @@ The app is a work in progress, as such, it has the following limitations among o
 
 
 ## Project Website
-Click [here](https://fly-me.herokuapp.com/) to proceed to **[Fly-me](https://fly-me.herokuapp.com/)**.
+Click [here](https://fly-me.herokuapp.com/) to proceed to **Fly-me**.
 
 ## Contributing
 
