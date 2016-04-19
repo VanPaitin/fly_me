@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   end
   get 'user/bookings' => "bookings#index"
   get "/auth/:provider/callback" => "sessions#create"
+  get "reservation" => "bookings#reservation_form"
+  post "reservations" => "bookings#make_reservation"
 end

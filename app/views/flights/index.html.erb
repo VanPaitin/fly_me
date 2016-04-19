@@ -1,3 +1,8 @@
+<% unless current_user %>
+  <div class= "center jumbotron">
+    <%= link_to "Make Reservation", "reservation", class: "btn btn-primary" %>
+  </div>
+<% end %>
 <div class="row search">
 
   <div class="col-sm-10 col-sm-offset-1">

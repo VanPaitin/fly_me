@@ -4,6 +4,7 @@
   <h1 class= "text-danger">
       You have made <%= pluralize(@bookings.count, "booking") %>...
   </h1>
+  <div class="center jumbotron">
       <% @bookings.each do |booking| %>
        <h4> <span class= "text-warning">Booking Number: </span><strong>00<%= booking.id %></strong></h4>
        <h4> <span class= "text-warning">Departure Airport: </span><strong><%= booking.flight.from_airport.name + ", " + booking.flight.from_airport.city %></strong></h4>
@@ -19,6 +20,7 @@
          <h1>--------------------------------------------------------------------------</h1>
        <% end %>
       <% end %>
+    </div>
     <% end %>
     <h4><%= link_to root_path do %>
       <i class="fa fa-home"></i> Go Home
