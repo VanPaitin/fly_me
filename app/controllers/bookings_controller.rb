@@ -12,23 +12,22 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find_by_id(params[:id])
   end
-  
+
   def reservation_form
-    
   end
-  
+
   def make_reservation
-    if !Booking.find(params[:id].to_i).exists?
-      flash[:notice] = "invalid code, please enter a correct booking number"
+    if !Booking.find_by_id(params[:id])
+      flash[:danger] = "invalid code, please enter a correct booking number"
       redirect_to :back
-    elsif !Booking.find(params[:id].to_i).user_id.nil?
+    elsif Booking.find(params[:id]).user_id
       flash[:danger] = "This booking may not belong to you"
       redirect_to :back
     else
-      redirect_to :edit
+      redirect_to edit_booking_path(params[:id])
     end
   end
-  
+
   def edit
     @booking = Booking.find(params[:id])
     @flight = @booking.flight
@@ -117,7 +116,7 @@ class BookingsController < ApplicationController
     end
     redirect_to flight_booking_path(@booking.flight, @booking)
   end
-  
+
   def ensure_login
     unless current_user
       flash[:notice] = "Please log in first"
