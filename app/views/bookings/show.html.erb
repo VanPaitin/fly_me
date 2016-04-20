@@ -7,7 +7,7 @@ Here are your flight details below</h1>
     <h1>Flight Details</h3>
     <h3> <span class= "text-warning">Total Price: </span><strong>$ <%= @booking.price %></strong></h4>
 
-    <h3>  <span class= "text-warning">Booking Number: </span><strong><%= @booking.id %> </strong></h3>
+    <h3>  <span class= "text-warning">Booking Number: </span><strong>00<%= @booking.id %> </strong></h3>
     <h3>  <span class= "text-warning">Departure Airport: </span><strong> <%= "#{@booking.flight.from_airport.name}, #{@booking.flight.from_airport.city}" %></strong></h3>
     <h3>  <span class= "text-warning">Destination Airport: </span><strong> <%= "#{@booking.flight.to_airport.name}, #{@booking.flight.to_airport.city}" %></strong></h3>
     <h3>  <span class= "text-warning">Departure Date: </span><strong> <%= @booking.flight.date.strftime("#{@booking.flight.date.day.ordinalize} %B %Y") %></strong></h3>
