@@ -1,8 +1,5 @@
-require "codeclimate-test-reporter"
 require 'simplecov'
-SimpleCov.start do
-  formatter SimpleCov::Formatter::MultiFormatter.new(CodeClimate::TestReporter::Formatter)
-end
+SimpleCov.start
 require 'capybara/rspec'
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app)
