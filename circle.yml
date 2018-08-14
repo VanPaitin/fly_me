@@ -1,3 +1,6 @@
+machine:
+  environment:
+    CC_TEST_REPORTER_ID: 8990632353a74f3fe2b633bf15649d03032ab843753a97488945c7974dd2dff1
 dependencies:
   post:
     - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
